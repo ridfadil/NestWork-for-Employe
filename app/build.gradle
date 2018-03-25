@@ -31,4 +31,18 @@ dependencies {
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.android.support:design:26.1.0'
+
+    //retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+
+    //butterknife
+    compile 'com.jakewharton:butterknife:8.6.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
+
+
+    //gson
+    // retrofit, gson
+    compile 'com.google.code.gson:gson:2.6.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'org.glassfish:javax.annotation:10.0-b28'
 }
