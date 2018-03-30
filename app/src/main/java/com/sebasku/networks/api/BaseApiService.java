@@ -1,6 +1,7 @@
 package com.sebasku.networks.api;
 
-import okhttp3.ResponseBody;
+import com.sebasku.networks.apimodel.ResponseLogin;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -13,6 +14,6 @@ import retrofit2.http.POST;
 public interface BaseApiService {
     @FormUrlEncoded
     @POST("api/auth/login")
-    Call<ResponseBody> addLogin(@Field("email") String email,
-                                @Field("password") String password);
+    Call<ResponseLogin> addLogin(@Field("email") String email,
+                                 @Field("password") String password);
 }

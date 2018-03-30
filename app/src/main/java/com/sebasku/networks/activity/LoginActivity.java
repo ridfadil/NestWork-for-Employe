@@ -1,6 +1,5 @@
 package com.sebasku.networks.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,17 +10,25 @@ import android.widget.Toast;
 import com.sebasku.networks.R;
 import com.sebasku.networks.api.BaseApiService;
 import com.sebasku.networks.api.UtilsApi;
+import com.sebasku.networks.apimodel.ResponseLogin;
+import com.sebasku.networks.apimodel.Token;
+import com.sebasku.networks.session.sessionManager;
 
-import okhttp3.ResponseBody;
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
     Button Login;
+    String accesToken;
+    sessionManager session;
     BaseApiService apiService;
     EditText username,password;
     String mUsername,mPassword;
+    List<Token> listToken = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,23 +58,25 @@ public class LoginActivity extends AppCompatActivity {
     private void saveLogin(String username, String password){
 
         apiService.addLogin(username,password)
-                .enqueue(new Callback<ResponseBody>() {
+                .enqueue(new Callback<ResponseLogin>() {
                     @Override
-                    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                    public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
                         if (response.isSuccessful()){
                             Toast.makeText(getApplicationContext(), "Success Login", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(LoginActivity.this,MenuActivity.class);
-                            startActivity(i);
+                            Token token = response.body().getToken();
+                            accesToken = token.getAccessToken();
+                            session.createLoginSession(accesToken);
                         }
                         else {
                             Toast.makeText(getApplicationContext(), "Cek email atau Password", Toast.LENGTH_SHORT).show();
                         }
                     }
 
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Toast.makeText(getApplicationContext(), "Koneksi internet bermasalah", Toast.LENGTH_SHORT).show();
+                                    @Override
+                                    public void onFailure(Call<ResponseLogin> call, Throwable t) {
+                                        Toast.makeText(getApplicationContext(), "Koneksi internet bermasalah", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                     }
-                });
-    }
-}
+
+                }
