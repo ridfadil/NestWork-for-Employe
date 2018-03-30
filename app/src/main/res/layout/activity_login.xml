@@ -55,6 +55,7 @@
             android:layout_marginTop="@dimen/marginTop_editText">
 
             <EditText
+                android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_user"
@@ -71,6 +72,7 @@
             android:layout_marginRight="@dimen/marginLeft_login">
 
             <EditText
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_lock"
