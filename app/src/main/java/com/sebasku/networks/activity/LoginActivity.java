@@ -38,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
         actionClicked();
         apiService = UtilsApi.getAPIService();
     }
+
+
+
     public void initialized(){
         Login =findViewById(R.id.btn_login);
         username = findViewById(R.id.et_email);
