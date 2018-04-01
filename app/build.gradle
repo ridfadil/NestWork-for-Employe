@@ -40,7 +40,6 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.6.0'
     compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
 
-
     //gson
     // retrofit, gson
     compile 'com.google.code.gson:gson:2.6.2'

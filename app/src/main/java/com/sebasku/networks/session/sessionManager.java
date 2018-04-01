@@ -25,13 +25,14 @@ public class sessionManager {
     int PRIVATE_MODE = 0;
 
     // Sharedpref file name
-    private static final String PREF_NAME = "NestworkAdminPref";
+    private static final String PREF_NAME = "NestworkUserPref";
 
     // All Shared Preferences Keys
     private static final String IS_LOGIN = "IsLoggedIn";
 
     // User name (make variable public to access from outside)
     public static final String KEY_ACCESSTOKEN = "ACCESSTOKEN";
+    public static final String KEY_ID = "ID";
 
 
     // Constructor
@@ -50,6 +51,17 @@ public class sessionManager {
 
         // Storing name in pref
         editor.putString(KEY_ACCESSTOKEN, token);
+
+        // commit changes
+        editor.commit();
+    }
+
+    public void createIdSession(String id){
+        // Storing login value as TRUE
+        editor.putBoolean(IS_LOGIN, true);
+
+        // Storing name in pref
+        editor.putString(KEY_ID, id);
 
         // commit changes
         editor.commit();
@@ -102,6 +114,12 @@ public class sessionManager {
         String accesToken = pref.getString(KEY_ACCESSTOKEN, "missing");
 
         return accesToken;
+    }
+
+    public String getId(){
+        String accesId = pref.getString(KEY_ID, "missing");
+
+        return accesId;
     }
 
     /**

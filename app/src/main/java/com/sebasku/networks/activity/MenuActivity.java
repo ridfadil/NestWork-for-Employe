@@ -32,7 +32,7 @@ public class MenuActivity extends AppCompatActivity {
         userFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(MenuActivity.this,EditProfilActivity.class);
+                Intent i = new Intent(MenuActivity.this,ProfileActivity.class);
                 startActivity(i);
             }
         });

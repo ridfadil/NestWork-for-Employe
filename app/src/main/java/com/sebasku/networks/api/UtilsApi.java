@@ -7,7 +7,7 @@ package com.sebasku.networks.api;
 public class UtilsApi {
 
     // 10.0.2.2 ini adalah localhost.
-    public static final String BASE_URL_API = "http://149.129.212.12:3000/";
+    public static final String BASE_URL_API = "http://10.0.2.2:3000/";
 
     // Mendeklarasikan Interface BaseApiService
     public static BaseApiService getAPIService(){
