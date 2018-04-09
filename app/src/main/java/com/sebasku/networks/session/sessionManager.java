@@ -33,6 +33,7 @@ public class sessionManager {
     // User name (make variable public to access from outside)
     public static final String KEY_ACCESSTOKEN = "ACCESSTOKEN";
     public static final String KEY_ID = "ID";
+    public static final String KEY_EMAIL = "EMAIL";
 
 
     // Constructor
@@ -57,6 +58,17 @@ public class sessionManager {
     }
 
     public void createIdSession(String id){
+        // Storing login value as TRUE
+        editor.putBoolean(IS_LOGIN, true);
+
+        // Storing name in pref
+        editor.putString(KEY_ID, id);
+
+        // commit changes
+        editor.commit();
+    }
+
+    public void createEmailSession(String id){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
@@ -120,6 +132,12 @@ public class sessionManager {
         String accesId = pref.getString(KEY_ID, "missing");
 
         return accesId;
+    }
+
+    public String getEmail(){
+        String accesEmail = pref.getString(KEY_EMAIL, "missing");
+
+        return accesEmail;
     }
 
     /**

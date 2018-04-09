@@ -75,32 +75,19 @@ public class LoginActivity extends AppCompatActivity {
                     Token responsesToken = response.body().getToken();
                     String token = responsesToken.getAccessToken();
                     String id = responsesId.getId();
+                    String email = responsesId.getEmail();
                     session.createIdSession(id);
+                    session.createEmailSession(email);
+                    session.createLoginSession(token);
                     Toast.makeText(LoginActivity.this, id, Toast.LENGTH_SHORT).show();
                     Toast.makeText(LoginActivity.this, token, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, email, Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(LoginActivity.this, MenuActivity.class);
                     startActivity(i);
                 } else {
                     Toast.makeText(LoginActivity.this, "check your Email or Password", Toast.LENGTH_SHORT).show();
                 }
             }
-
-       /* apiService.addLogin(username,password)
-                .enqueue(new Callback<ResponseLogin>() {
-                    @Override
-                    public void onResponse(Call<ResponseLogin> call, Response<ResponseLogin> response) {
-                        if (response.isSuccessful()){
-                            Toast.makeText(getApplicationContext(), "Success Login", Toast.LENGTH_SHORT).show();
-                            Token token = response.body().getToken();
-                            accesToken = token.getAccessToken();
-                        *//*    session.createLoginSession(accesToken);*//*
-
-                            Toast.makeText(LoginActivity.this, accesToken, Toast.LENGTH_SHORT).show();
-                        }
-                        else {
-                            Toast.makeText(getApplicationContext(), "Cek email atau Password", Toast.LENGTH_SHORT).show();
-                        }
-                    }*/
 
             @Override
             public void onFailure(Call<ResponseLogin> call, Throwable t) {

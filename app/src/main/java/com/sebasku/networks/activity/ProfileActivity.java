@@ -52,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void getProfile() {
         sessionManager session = new sessionManager(getApplicationContext());
-        String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjUxNTEwNzgsImlhdCI6MTUyMjU1OTA3OCwic3ViIjoiNWFjMDMwYTU0NmQxYTYyNDBiOWY5OTM3In0.1p_uJdsk8dun5l1M7bM8xoD6f42rXpUfGzoety0uM80";
+        String token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1MjM4MzI4MjEsImlhdCI6MTUyMzIzMjgyMSwic3ViIjoiNWFjOGI3M2JhMzY2OTQxMTk2YjE1ZDRkIn0.rPWFhWY5xUOl19PT2v9b1HOXeAE2Y2VpdH48evuYctw";
         //String token = session.getAccesToken().toString();
         Profile profile = new Profile(token);
         Call<ResponseProfile> call = UtilsApi.getAPIService().getProfile(token);

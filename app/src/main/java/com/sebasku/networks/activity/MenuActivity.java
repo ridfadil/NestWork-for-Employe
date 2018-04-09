@@ -1,16 +1,19 @@
 package com.sebasku.networks.activity;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.sebasku.networks.R;
+import com.sebasku.networks.session.sessionManager;
 
 public class MenuActivity extends AppCompatActivity {
 
     ImageView userFoto,slipGaji,Cuti,infoPerusahaan,presensiHarian;
+    TextView logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ public class MenuActivity extends AppCompatActivity {
         Cuti = findViewById(R.id.ajukan_cuti);
         infoPerusahaan = findViewById(R.id.informasi_perusahaan);
         presensiHarian = findViewById(R.id.presensi_harian);
+        logout = findViewById(R.id.tv_logout);
+
     }
 
     public void actionClicked(){
@@ -66,6 +71,13 @@ public class MenuActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MenuActivity.this,CutiActivity.class);
                 startActivity(i);
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sessionManager sessionlogout = new sessionManager(getApplicationContext());
+                sessionlogout.logoutUser();
             }
         });
     }
